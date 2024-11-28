@@ -1,0 +1,372 @@
+[
+  {
+    "text": "chuẩn rồi",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 6,
+        "end": 9,
+        "confidence_entity": 0.6162325143814087,
+        "value": "rồi",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "ngày 22 tháng 7 có bao nhiêu sản phụ sinh",
+    "entities": [
+      {
+        "start": 5,
+        "end": 15,
+        "value": "22 tháng 7",
+        "entity": "time"
+      },
+      {
+        "start": 37,
+        "end": 41,
+        "value": "sinh",
+        "entity": "statistic_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 5,
+        "end": 15,
+        "confidence_entity": 0.6085161566734314,
+        "value": "22 tháng 7",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "có bao nhiêu sản phụ sinh mổ [tháng rồi] (time)",
+    "entities": [
+      {
+        "start": 21,
+        "end": 28,
+        "value": "sinh mổ",
+        "entity": "statistic_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "statistic_type",
+        "start": 21,
+        "end": 28,
+        "confidence_entity": 0.9910123944282532,
+        "value": "sinh mổ",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time",
+        "start": 30,
+        "end": 39,
+        "confidence_entity": 0.9783841371536255,
+        "value": "tháng trước",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Hãy cho tôi báo cáo tổng hợp năm 2024",
+    "entities": [
+      {
+        "start": 29,
+        "end": 32,
+        "value": "năm",
+        "entity": "report_type"
+      },
+      {
+        "start": 33,
+        "end": 37,
+        "value": "2024",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 29,
+        "end": 37,
+        "confidence_entity": 0.7472425699234009,
+        "value": "năm 2024",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "tháng vừa qua, khoa cấp cúu và hstc có bao nhiêu bệnh nhân xuất viện",
+    "entities": [
+      {
+        "start": 0,
+        "end": 13,
+        "value": "tháng vừa qua",
+        "entity": "time"
+      },
+      {
+        "start": 15,
+        "end": 35,
+        "value": "khoa cấp cúu và hstc",
+        "entity": "department"
+      },
+      {
+        "start": 59,
+        "end": 68,
+        "value": "xuất viện",
+        "entity": "statistic_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 0,
+        "end": 13,
+        "confidence_entity": 0.9971605539321899,
+        "value": "tháng trước",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "department",
+        "start": 20,
+        "end": 35,
+        "confidence_entity": 0.86,
+        "value": "cấp cúu và hstc",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "statistic_type",
+        "start": 59,
+        "end": 68,
+        "confidence_entity": 0.9517605304718018,
+        "value": "xuất viện",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "số bệnh nhân đã phẫu thuật PT trong tháng rồi là bao nhiêu?",
+    "entities": [
+      {
+        "start": 16,
+        "end": 26,
+        "value": "phẫu thuật",
+        "entity": "statistic_type"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "value": "PT",
+        "entity": "department"
+      },
+      {
+        "start": 36,
+        "end": 45,
+        "value": "tháng rồi",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "department",
+        "start": 16,
+        "end": 26,
+        "confidence_entity": 0.9955012202262878,
+        "value": "phẫu thuật",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "department",
+        "start": 27,
+        "end": 29,
+        "confidence_entity": 0.9789714813232422,
+        "value": "PT",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "time",
+        "start": 36,
+        "end": 45,
+        "confidence_entity": 0.7517589926719666,
+        "value": "tháng trước",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "từ ngày 01/12/2024 đến 15/12/2024, khoa nội th tiếp nhận bao nhiêu bệnh nhân điều trị",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "01/12/2024",
+        "entity": "time"
+      },
+      {
+        "start": 23,
+        "end": 33,
+        "value": "15/12/2024",
+        "entity": "time"
+      },
+      {
+        "start": 40,
+        "end": 46,
+        "value": "nội th",
+        "entity": "department"
+      },
+      {
+        "start": 77,
+        "end": 85,
+        "value": "điều trị",
+        "entity": "statistic_type"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 8,
+        "end": 18,
+        "confidence_entity": 0.9971801042556763,
+        "value": "01/12/2024",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "time",
+        "start": 23,
+        "end": 33,
+        "confidence_entity": 0.9973561763763428,
+        "value": "15/12/2024",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "department",
+        "start": 40,
+        "end": 46,
+        "confidence_entity": 0.6725949645042419,
+        "value": "nội tổng hợp",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "department",
+        "start": 77,
+        "end": 85,
+        "confidence_entity": 0.6513062715530396,
+        "value": "điều trị",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "tháng vừa qua, số lượng bệnh nhân trốn viện tại khoa nội trú là bao nhiêu",
+    "entities": [
+      {
+        "start": 0,
+        "end": 13,
+        "value": "tháng vừa qua",
+        "entity": "time"
+      },
+      {
+        "start": 24,
+        "end": 43,
+        "value": "bệnh nhân trốn viện",
+        "entity": "statistic_type"
+      },
+      {
+        "start": 53,
+        "end": 60,
+        "value": "nội trú",
+        "entity": "department"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 0,
+        "end": 13,
+        "confidence_entity": 0.9599348902702332,
+        "value": "tháng trước",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "statistic_type",
+        "start": 34,
+        "end": 43,
+        "confidence_entity": 0.9877182245254517,
+        "value": "trốn viện",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "department",
+        "start": 53,
+        "end": 56,
+        "confidence_entity": 0.6114777326583862,
+        "value": "nội tổng hợp",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "số bệnh nhân ckq tại khoa [xét nghiệm] trong năm ngoái la bao nhiêu?",
+    "entities": [
+      {
+        "start": 13,
+        "end": 16,
+        "value": "ckq",
+        "entity": "statistic_type"
+      },
+      {
+        "start": 45,
+        "end": 54,
+        "value": "năm ngoái",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 45,
+        "end": 54,
+        "confidence_entity": 0.8879776000976562,
+        "value": "năm trước",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

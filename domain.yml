@@ -1,0 +1,159 @@
+version: "3.1"
+
+entities:
+  - department
+  - statistic_type
+  - time
+  - report_type
+
+
+slots:
+  last_department:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: department
+  last_statistic_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: statistic_type
+  last_time:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: time
+  last_grain:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  report_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: report_type
+  report_time:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: time
+  report_context:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  # Thêm các slots gốc để lưu trữ thông tin chi tiết hơn (tùy chọn)
+  current_department:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: department
+
+  current_statistic_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: statistic_type
+
+  current_time:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: time
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - ask_wellbeing
+  - bot_challenge
+  - ask_statistics
+  - ask_statistic_pregnant
+  - ask_money
+  - ask_report
+
+responses:
+  utter_greet:
+  - text: "Chào sếp ạ!"
+  - text: "Tôi đây ạ!"
+  - text: "Thưa sếp, tôi có thể giúp gì ạ!"
+  - text: "Trợ lý HisAssistant xin chào sếp ạ!"
+  
+  # utter_default:
+  # - text: "Xin lỗi sếp, em chưa hiểu ý sếp ạ!"
+  # - text: "Xin lỗi sếp, sếp có thể hỏi lại không ạ?"
+
+  utter_ask_wellbeing:
+  - text: "Tôi khỏe ạ"
+  - text: "Tôi khỏe thưa sếp"
+  - text: "Tôi ổn ạ!"
+
+  utter_cheer_up:
+  - text: "Hãy vui lên sếp ạ"
+    image: 'https://res.cloudinary.com/dytehhg2f/image/upload/v1727939579/hisMeetting/MemeRasa/download_2_ar5whx.jpg'
+  - text: "Đừng buồn nữa"
+  - text: "Mọi chuyện sẽ tốt thôi, cố lên sếp"
+    image: 'https://res.cloudinary.com/dytehhg2f/image/upload/v1727939579/hisMeetting/MemeRasa/download_2_ar5whx.jpg'
+
+
+  utter_happy:
+  - text: "Tuyệt vời"
+
+  utter_goodbye:
+  - text: "Dạ tạm biệt sếp. Rất vui vì được hỗ trợ sếp ạ"
+  - text: "Dạ chào sếp ạ"
+  - text: "Dạ tạm biệt sếp"
+  - text: "Dạ hẹn gặp lại sếp"
+
+  utter_affirm:
+  - text: "Sếp muốn biết thêm báo cáo nào không ạ."
+  - text: "Tuyệt, sếp có câu hỏi nào nữa không ạ."
+
+  utter_deny:
+  - text: "Xin lỗi về sự bất tiện này"
+  - text: "Tôi xin lỗi"
+  - text: "Tôi xin lỗi khi không giúp được sếp"
+
+  utter_iamabot:
+  - text: "Dạ em là HisAssistant, một trợ lý ảo ạ."
+  - text: "Dạ em là một trợ lý ảo."
+
+
+  utter_fallback:
+  - text: "Dạ em chưa hiểu ý sếp ạ."
+  - text: "Dạ xin lỗi sếp, em không hiểu ý sếp ạ."
+
+  utter_did_that_help:
+  - text: "Đúng ý sếp chưa ạ?"
+  - text: "Có đúng không ạ?"
+
+  utter_ask_department:
+  - text: "Sếp muốn xem thông tin gì ạ?"
+  - text: "Sêp vui lòng cho em biết thông tin cụ thể hơn ạ?"
+    
+  # utter_ask_statistic_type:
+  # - text: "Bạn muốn xem loại thống kê nào?"
+  # - text: "Vui lòng cho biết loại thống kê bạn muốn xem?"
+
+actions:
+  - action_track_statistics
+  - action_track_pregnant_statistics
+  - action_get_financial_statistics
+  - action_fetch_report
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

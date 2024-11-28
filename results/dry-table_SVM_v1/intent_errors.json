@@ -1,0 +1,66 @@
+[
+  {
+    "text": "chính xác",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.3948040500046738
+    }
+  },
+  {
+    "text": "ngày 01/11/2024 đến ngày 15/11/2024, có bao nhiêu sản phụ sinh mổ",
+    "intent": "ask_statistic_pregnant",
+    "intent_prediction": {
+      "name": "ask_report",
+      "confidence": 0.309755340507145
+    }
+  },
+  {
+    "text": "thích thật",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.43390908216022667
+    }
+  },
+  {
+    "text": "tôi thích nó",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.56574103500985
+    }
+  },
+  {
+    "text": "bá cháy",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.3833525094854211
+    }
+  },
+  {
+    "text": "không đúng",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.44254027934146495
+    }
+  },
+  {
+    "text": "thật tệ",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.5681828448603057
+    }
+  },
+  {
+    "text": "mình chào bạn",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.5954027898960392
+    }
+  }
+]

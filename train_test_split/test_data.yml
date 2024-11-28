@@ -1,0 +1,300 @@
+version: "3.1"
+nlu:
+- intent: bot_challenge
+  examples: |
+    - bạn có phải người không?
+    - bạn là siêu nhân hả?
+- intent: affirm
+  examples: |
+    - chuẩn rồi
+    - chính xác
+- intent: ask_statistic_pregnant
+  examples: |
+    - ngày [22 tháng 7](time) có bao nhiêu sản phụ [sinh](statistic_type)
+    - có bao nhiêu sản phụ [sinh mổ](statistic_type) [tháng rồi] (time)
+    - ngày [01/11/2024](time) đến ngày [15/11/2024](time), có bao nhiêu sản phụ [sinh mổ](statistic_type)
+- intent: ask_wellbeing
+  examples: |
+    - ổn cả chứ?
+    - sức khỏe ra sao?
+- intent: mood_great
+  examples: |
+    - thích thật
+    - tôi thích nó
+    - bá cháy
+- intent: ask_money
+  examples: |
+    - [tháng trước](time) [chi](statistic_type) bao nhiêu tiền cho [dược ls](department)
+    - [tuần trước](time) [chi](statistic_type) bao nhiêu tiền cho [nhà thuốc](department)
+    - [tuần rồi](time) [chi](statistic_type) bao nhiêu tiền cho [dls](department)
+- intent: deny
+  examples: |
+    - không đúng
+    - không được đâu
+    - không được nha
+- intent: mood_unhappy
+  examples: |
+    - thật tệ
+    - thật không ổn
+    - thật chán quá đi
+    - hôm nay tệ quá
+- intent: goodbye
+  examples: |
+    - bye
+    - see you again
+    - gặp lại sau nhé
+    - dừng lại
+    - tạm biệt
+    - see you later
+- intent: greet
+  examples: |
+    - chào trợ lý của tôi
+    - chào buổi sáng
+    - chào anh
+    - mình chào bạn
+    - chaof banj
+    - chaaof banj
+    - ê
+- intent: ask_report
+  examples: |
+    - Báo cáo [quý](report_type) [2 năm 2024](time) là gì?
+    - Cho tôi xem báo cáo [ngày](report_type) [15-04-2023](time)
+    - Tôi muốn báo cáo [ngày](report_type) [30-12-2023](time)
+    - Có báo cáo của [tháng](report_type) [6 năm 2024](time) không?
+    - Báo cáo của [năm](report_type) [2025](time) đã có chưa?
+    - Báo cáo của [quý](report_type) [2 năm 2022](time) đâu?
+    - Tôi cần báo cáo [quý](report_type) [4 năm 2022](time)
+    - Có báo cáo [ngày](report_type) [22-07-2022](time) không?
+    - Hãy lấy báo cáo [ngày](report_type) [14-02-2024](time) giúp tôi
+    - Hãy cho tôi báo cáo tổng hợp [năm](report_type) [2024](time)
+- intent: ask_statistics
+  examples: |
+    - [tuần trước](time) có bao nhiêu bệnh nhân [CV](statistic_type) khoa [cấp cứu và hstc](department)
+    - [tháng vừa qua](time), [khoa cấp cúu và hstc](department) có bao nhiêu bệnh nhân [xuất viện](statistic_type)
+    - số bệnh nhân đã [phẫu thuật](statistic_type) [PT](department) trong [tháng rồi](time) là bao nhiêu?
+    - có bao nhiêu bệnh nhân [nhập viện](statistic_type) khoa [cấp cứu & hstc](department) trong [quý trước](time)
+    - từ ngày [01/12/2024](time) đến [15/12/2024](time), khoa [nội th](department) tiếp nhận bao nhiêu bệnh nhân [điều trị](statistic_type)
+    - có bao nhiêu bệnh nhân [chuyển viện](statistic_type) ở khoa [nội TH](department) trong [quý trước](time)
+    - từ ngày [01/10/2024](time) đến [15/10/2024](time), có bao nhiêu ca đã [thực hiện](statistic_type) [cận lâm sàng](department)
+    - [tháng vừa qua](time), số lượng [bệnh nhân trốn viện](statistic_type) tại khoa [nội trú](department) là bao nhiêu
+    - thống kê bệnh nhân [chuyển viện](statistic_type) khoa [cấp cứu và hồi sức tích cực](department) trong [quý trước](time)
+    - [quý 4](time), thống kê số lượng bệnh nhân [nhập viện](statistic_type) tại khoa [nội tổng hợp](department)
+    - số bệnh nhân [ckq](statistic_type) tại khoa [xét nghiệm] trong [năm ngoái](time) la bao nhiêu?
+    - [năm rồi](time) có bao nhiêu bệnh nhân [chuyển viện](statistic_type) khoa [ngoại](department)
+- synonym: nhập viện
+  examples: |
+    - nhập viện
+    - NV
+    - nhap vien
+    - nhaps vien
+    - nhaapj vieenj
+    - nhapj vienj
+    - nhap vienj
+- synonym: tử vong
+  examples: |
+    - tử vong
+    - tuwr vong
+    - tuvong
+    - TV
+    - qua đời
+    - tu vong
+    - chết
+- synonym: chuyển viện
+  examples: |
+    - chuyển viện
+    - chuyenvien
+    - chuyeenr vieenj
+    - chuyển vieenj
+    - chuyen vien
+    - CV
+- synonym: xuất viện
+  examples: |
+    - xuất viện
+- synonym: trốn viện
+  examples: |
+    - trốn viện
+    - trốn viene
+    - trốn viên
+    - tron vien
+- synonym: đang điều trị
+  examples: |
+    - đang điều trị
+    - ddt
+    - DDT
+    - đang đt
+    - đang dt
+    - dang dieu tri
+- synonym: khám bệnh
+  examples: |
+    - khám beenhj
+    - kham benh
+    - khám bệnh
+    - kb
+    - kc bệnh
+    - kham chua benh
+    - kham chữa bệnh
+    - kcb
+    - khám chữa bệnh
+    - khám chữa
+- synonym: được chỉ định
+  examples: |
+    - chỉ định
+    - chi dinh
+    - cd
+- synonym: thực hiện
+  examples: |
+    - thực hiện
+    - thuc hien
+    - thuchien
+    - TH
+- synonym: có kết quả
+  examples: |
+    - có KQ
+    - ckq
+    - có ket quả
+    - co ket qua
+- synonym: sinh thường
+  examples: |
+    - sinh thường
+    - sinh thuong
+    - sanh thường
+    - sanh thuong
+    - sanh thương
+    - sinh thương
+- synonym: sinh mổ
+  examples: |
+    - sinh mổ
+    - sinh mo
+    - sanh mổ
+    - sanh mo
+- synonym: thu
+  examples: |
+    - thu
+    - tiền thu
+- synonym: chi
+  examples: |
+    - chi
+    - tiền chi
+    - chi phí
+- synonym: cấp cứu
+  examples: |
+    - cấp cứu
+    - CC
+    - CC&HSTC
+    - cc và hs tích cực
+    - cấp cứu và hồi sức
+    - cap cuu va hoi suc
+    - cấp cứu và hstc
+    - cấp cứu hstc
+    - cap cuu
+    - cc và hstc
+    - cc&hstc
+    - cchstc
+- synonym: cận lâm sàng
+  examples: |
+    - cán lâm sàng
+    - CLS
+    - cạn lam sàng
+    - cận ls
+    - cận lamsang
+- synonym: xét nghiệm
+  examples: |
+    - xét nghiệm
+    - XN
+    - xet nghiem
+- synonym: phẫu thuật
+  examples: |
+    - phẫu thuật
+    - ptt
+    - phau thuat
+    - phẫu thủ thuật
+    - PTT
+    - phau thu thuat
+- synonym: CSSKSS
+  examples: |
+    - chăm sóc skss
+    - csskss
+    - khoa sản
+    - khoa san
+- synonym: nội tổng hợp
+  examples: |
+    - nth
+    - NTH
+    - nội TH
+    - nội
+    - nội tong hợp
+    - noi tong hop
+    - noi th
+- synonym: ngoại tổng hợp
+  examples: |
+    - ngoại tổng hợp
+    - ngoại
+    - NgTH
+    - ngoai th
+    - ngoai tong hop
+    - ngoại th
+- synonym: ngoại trú
+  examples: |
+    - ngoại trú
+    - điều trị ngoại trú
+    - dieu tri ngoai tru
+    - khám bệnh ngoại trú
+    - kham benh ngoai tru
+    - khoa kham benh
+    - khoa khám bệnh
+- synonym: nội trú
+  examples: |
+    - điều trị nội trú
+    - dt noi tru
+    - khoa nội trú
+    - khoa noi tru
+    - noi tru
+    - khoa dt noi tru
+    - khoa đtri nội trú
+    - nội trú
+- synonym: nhà thuốc
+  examples: |
+    - nhà thuốc
+    - nhathuoc
+    - nha thuoc
+    - nhaf thuốc
+    - nhaf thuoocs
+- synonym: tài chính
+  examples: |
+    - tài chính
+    - tai chinh
+    - taichinh
+    - tài chinh
+    - tai chính
+    - taif chinhs
+- synonym: dược lâm sàng
+  examples: |
+    - dls
+    - DLS
+    - dược ls
+    - duoc lam sang
+    - dược lâm sang
+    - duoc lâm sàng
+- synonym: tuần trước
+  examples: |
+    - tuần rồi
+    - tuan roi
+    - tuần vừa qua
+- synonym: tháng trước
+  examples: |
+    - tháng rồi
+    - tháng vừa qua
+- synonym: năm trước
+  examples: |
+    - năm ngoái
+    - năm rồi
+- synonym: quý trước
+  examples: |
+    - quý vừa rồi
+    - quý rồi
+- synonym: hôm qua
+  examples: |
+    - ngày hôm qua
+- synonym: hôm kia
+  examples: |
+    - ngày hôm kia

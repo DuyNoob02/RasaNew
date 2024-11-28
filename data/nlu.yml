@@ -1,0 +1,589 @@
+version: "3.1"
+
+nlu:
+- synonym: nhập viện
+  examples: |
+    - nhập viện
+    - NV
+    - nhap vien
+    - nhaps vien
+    - nhaapj vieenj
+    - nhapj vienj
+    - nhap vienj
+    - nhapvien
+
+- synonym: tử vong
+  examples: |
+    - tử vong
+    - tuwr vong
+    - tuvong
+    - TV
+    - qua đời
+    - tu vong
+    - chết
+
+- synonym: chuyển viện
+  examples: |
+    - chuyển viện
+    - chuyenvien
+    - chuyeenr vieenj
+    - chuyển vieenj
+    - chuyen vien
+    - CV
+- synonym: xuất viện
+  examples: |
+    - xuất viện
+    - xuất viện
+    - xuất viện
+
+- synonym: trốn viện
+  examples: |
+    - trốn viện
+    - trốn viene
+    - trốn viên
+    - tron vien
+
+- synonym: đang điều trị
+  examples: |
+    - đang điều trị
+    - ddt
+    - DDT
+    - đang đt
+    - đang dt
+    - dang dieu tri
+
+
+- synonym: khám bệnh
+  examples: |
+    - khám beenhj
+    - kham benh
+    - khám bệnh
+    - kb
+    - kc bệnh
+    - kham chua benh
+    - kham chữa bệnh
+    - kcb
+    - khám chữa bệnh
+    - khám chữa 
+    - khám bệnh
+
+- synonym: được chỉ định
+  examples: |
+    - chỉ định 
+    - chi dinh
+    - chi dinh
+    - cd
+
+- synonym: thực hiện
+  examples: |
+    - thực hiện
+    - thuc hien
+    - thuchien
+    - TH
+
+- synonym: có kết quả
+  examples: |
+    - có KQ
+    - ckq
+    - có ket quả
+    - co ket qua
+
+- synonym: sinh thường
+  examples: |
+    - sinh thường
+    - sinh thuong
+    - sanh thường    
+    - sanh thuong
+    - sanh thương
+    - sinh thương
+
+- synonym: sinh mổ
+  examples: |
+    - sinh mổ
+    - sinh mo
+    - sanh mổ   
+    - sanh mo
+
+- synonym: thu
+  examples: |   
+    - thu
+    - tiền thu
+- synonym: chi
+  examples: |
+    - chi
+    - tiền chi
+    - chi phí
+
+- synonym: cấp cứu
+  examples: |
+    - cấp cứu
+    - CC
+    - CC&HSTC
+    - cc và hs tích cực
+    - cấp cứu và hồi sức
+    - cap cuu va hoi suc
+    - cấp cứu và hstc
+    - cấp cứu hstc
+    - cap cuu
+    - cc và hstc
+    - cc&hstc
+    - cchstc
+
+
+
+- synonym: cận lâm sàng
+  examples: |
+    - cán lâm sàng
+    - CLS
+    - cạn lam sàng
+    - cận ls
+    - cận lamsang
+
+- synonym: xét nghiệm
+  examples: |
+    - xét nghiệm
+    - XN
+    - xet nghiem
+
+- synonym: phẫu thuật
+  examples: |
+    - phẫu thuật
+    - ptt
+    - phau thuat
+    - phẫu thủ thuật
+    - PTT
+    - phau thu thuat
+
+
+- synonym: CSSKSS
+  examples: |
+    - chăm sóc skss
+    - csskss
+    - khoa sản
+    - khoa san
+  
+
+- synonym: nội tổng hợp
+  examples: |
+    - nth
+    - NTH
+    - nội TH
+    - nội
+    - nội tong hợp
+    - noi tong hop
+    - noi th
+
+- synonym: ngoại tổng hợp
+  examples: |
+    - ngoại tổng hợp
+    - ngoại
+    - NgTH
+    - ngoai th
+    - ngoai tong hop
+    - ngoại th
+- synonym: ngoại trú
+  examples: |
+    - ngoại trú
+    - điều trị ngoại trú
+    - dieu tri ngoai tru
+    - khám bệnh ngoại trú
+    - kham benh ngoai tru
+    - khoa kham benh
+    - khoa khám bệnh
+    - ngoại trú
+
+- synonym: nội trú
+  examples: |
+    - điều trị nội trú
+    - dt noi tru
+    - khoa nội trú
+    - khoa noi tru
+    - noi tru
+    - khoa dt noi tru
+    - khoa đtri nội trú
+    - nội trú
+
+- synonym: nhà thuốc
+  examples: |
+    - nhà thuốc
+    - nhathuoc
+    - nha thuoc
+    - nhaf thuốc
+    - nhaf thuoocs
+
+- synonym: tài chính
+  examples: |
+    - tài chính
+    - tai chinh
+    - taichinh
+    - tài chinh
+    - tai chính
+    - taif chinhs
+
+- synonym: dược lâm sàng
+  examples: |
+    - dls
+    - DLS
+    - dược ls
+    - duoc lam sang
+    - dược lâm sang
+    - duoc lâm sàng
+
+- synonym: tuần trước
+  examples: |
+    - tuần rồi
+    - tuan roi
+    - tuần vừa qua
+
+- synonym: tháng trước
+  examples: |
+    - tháng rồi
+    - tháng vừa qua
+
+- synonym: năm trước
+  examples: |
+    - năm ngoái
+    - năm rồi
+
+- synonym: quý trước
+  examples: |
+    - quý vừa rồi
+    - quý rồi
+
+- synonym: hôm qua
+  examples: |
+    - ngày hôm qua
+
+- synonym: hôm kia
+  examples: |
+    - ngày hôm kia
+
+
+- intent: ask_statistics
+  examples: |
+    - [tuần trước](time) có bao nhiêu bệnh nhân [CV](statistic_type) khoa [cấp cứu và hstc](department)
+    - thống kê bệnh nhân [chuyển viện](statistic_type) khoa [cấp cứu và hồi sức tích cực](department) trong [quý trước](time)
+    - khoa [cấp cứu & hstc](department) đã tiếp nhận bao nhiêu bệnh nhân [nhập viện](statistic_type) từ [năm ngoái](time)
+    - [hôm kia](time) có bao nhiêu bệnh nhân [trốn viện](statistic_type) ở khoa [cấp cứu](department)
+    - có bao nhiêu bệnh nhân [nhập viện](statistic_type) khoa [cấp cứu & hstc](department) trong [quý trước](time)
+    - [hôm qua](time), khoa [hồi sức tích cực](department) có bao nhiêu bệnh nhân [tu vong](statistic_type)
+    - [tuần trước](time) có bao nhiêu ca [tử vong](statistic_type) khoa [hồi sức tích cực](department)
+    - [tuần rồi](time) có bao nhiêu bệnh nhân [đang điều trị](statistic_type) khoa [cấp cứu và hstc](department)
+    - số lượng bệnh nhân [tử vong](statistic_type) tại khoa [cc&hstc](department) trong [tháng rồi](time) là bao nhiêu
+    - [tháng vừa qua](time), [khoa cấp cúu và hstc](department) có bao nhiêu bệnh nhân [xuất viện](statistic_type)
+    - [năm ngoái](time) có bao nhiêu bệnh nhân [nhập viện](statistic_type) khoa [ngoại th](department)
+    - [tháng trước](time) có bao nhiêu bệnh nhân [xuất viện](statistic_type) khoa [ngoại TH](department)
+    - [năm rồi](time) có bao nhiêu bệnh nhân [chuyển viện](statistic_type) khoa [ngoại](department)
+    - [hôm qua](time) có bao nhiêu bệnh nhân [nhập viện](statistic_type) khoa [ngoại tổng hợp](department)
+    - thống kê [bệnh nhân xuất viện](statistic_type) khoa [ngoại tổng hợp](department) trong [quý 1](time)
+    - khoa [ngoại tổng hợp](department) có bao nhiêu [bệnh nhân đang điều trị](statistic_type) trong [quý trước](time)
+    - [tháng vừa qua](time), khoa [ngoại tổng hợp](department) có bao nhiêu [bệnh nhân chuyển viện](statistic_type)
+    - số bệnh nhân [tử vong](statistic_type) tại khoa [ngoại tổng hợp](department) trong [hôm kia](time) là bao nhiêu?
+    - [quý 4](time), thống kê số lượng bệnh nhân [nhập viện](statistic_type) tại khoa [nội tổng hợp](department)
+    - thống kê bệnh nhân [đang điều trị](statistic_type) [hôm qua](time) ở khoa [nội tổng hợp](department)
+    - khoa [nội tổng hợp](department) có bao nhiêu bệnh nhân [ddt](statistic_type) [tháng trước](time)
+    - [năm trước](time) có bao nhiêu bệnh nhân [tử vong](statistic_type) khoa [nội tổng hợp](department)
+    - có bao nhiêu bệnh nhân [chuyển viện](statistic_type) ở khoa [nội TH](department) trong [quý trước](time)
+    - từ ngày [01/12/2024](time) đến [15/12/2024](time), khoa [nội th](department) tiếp nhận bao nhiêu bệnh nhân [điều trị](statistic_type)
+    - khoa [nội th](department) [tháng rồi](time) có bao nhiêu bệnh nhân [chuyển viện](statistic_type)
+    - [hôm qua](time) ở [khoa điều trị nội trú](department) có bao nhiêu [bệnh nhân xuất viện](statistic_type)
+    - trong [tháng trước](time), khoa [nội trú](department) có bao nhiêu bệnh nhân [đang điều trị](statistic_type)
+    - khoa [nội trú](department) [năm ngoái](time) có bao nhiêu bệnh nhân [nhập viện](statistic_type)
+    - [hôm kia](time) ở [khoa điều trị nội trú](department) [chuyển viện](statistic_type) bao nhiêu bệnh nhân?
+    - có bao nhiêu ca [xuất viện](statistic_type) tại [khoa nội trú](department) trong [tháng rồi](time)
+    - thống kê số bệnh nhân [tử vong](statistic_type) tại [khoa điều trị nội trú](department) trong [quý trước](time)
+    - [tháng vừa qua](time), số lượng [bệnh nhân trốn viện](statistic_type) tại khoa [nội trú](department) là bao nhiêu
+    - [hôm qua](time) có bao nhiêu bệnh nhân [khám bệnh](statistic_type) ở khoa [khám bệnh ngoại trú](department)
+    - trong [tháng trước](time), khoa [khám bệnh ngoại trú](department) có bao nhiêu bệnh nhân [kcb](statistic_type)
+    - tổng số bao nhiêu ca đến [khám bệnh](statistic_type) tại [điều trị ngoại trú](department) trong [quý trước](time)
+    - số lượng bệnh nhân [khám chữa bệnh](statistic_type) tại khoa [khám bệnh ngoại trú] trong [năm ngoái](time) la bao nhiêu?
+    - [tuần rồi] có bao nhiêu bệnh nhân [kcb](statistic_type) ở khoa [điều trị ngoại trú](department)
+    - [tuần trước](time) có bao nhiêu bệnh nhân [khám bệnh](statistic_type) ở khoa [điều trị ngoại trú](department)
+    - [tuần trước](time) có bao nhiêu bệnh nhân [khám bệnh](statistic_type) tại khoa [ngoại trú](department)
+    - có bao nhiêu bệnh nhân [chuyển viện](statistic_type) ở khoa [điều trị ngoại trú](department) trong [tháng rồi](time)
+    - [tháng vừa qua](time), khoa [khám bệnh ngoại trú](department) có bao nhiêu bệnh nhân [khám bệnh](statistic_type)
+    - khoa [điều trị ngoại trú](department) [tháng trước](time) có bao nhiêu bệnh nhân [tử vong](statistic_type)
+    - bao nhiêu bệnh nhân [nhap vien](statistic_type) tại khoa [khám bệnh ngoại trú] trong [tuần trước](time)
+    - ngày [hôm qua](time) có bao nhiêu bệnh nhân [có kết quả](statistic_type) [cls](department)
+    - số bệnh nhân đã [có kết quả](statistic_type) [cls](department) trong [tháng rồi](time) là bao nhiêu?
+    - [tháng rồi](time) có bao nhiêu bệnh nhân [thực hiện](statistic_type) [cận ls](department)
+    - từ ngày [01/10/2024](time) đến [15/10/2024](time), có bao nhiêu ca đã [thực hiện](statistic_type) [cận lâm sàng](department)
+    - thống kê bệnh nhân đã [thực hiện](statistic_type) [cận lâm sàng](department) trong [năm ngoái](time)
+    - [tuần rồi](time) có bao nhiêu bệnh nhân [được chỉ định](statistic_type) [cận lâm sàng](department)
+    - ngày [23 tháng 7](time) có bao nhiêu bệnh nhân [được chỉ định](statistic_type) [cận lâm sàng](department)
+    - ngày [hôm qua](time) có bao nhiêu bệnh nhân [thực hiện](statistic_type) [PT](department)
+    - số bệnh nhân đã [phẫu thuật](statistic_type) [PT](department) trong [tháng rồi](time) là bao nhiêu?
+    - [tháng rồi](time) có bao nhiêu bệnh nhân [thực hiện](statistic_type) [phẫu thuật](department)
+    - từ ngày [01/10/2024](time) đến [15/10/2024](time), có bao nhiêu ca đã [thực hiện](statistic_type) [phẫu thuật](department)
+    - thống kê bệnh nhân đã [thực hiện](statistic_type) [phẫu thủ thuật](department) trong [năm ngoái](time)
+    - [tuần rồi](time) có bao nhiêu bệnh nhân [được chỉ định](statistic_type) [phẫu thuật](department)
+    - ngày [23 tháng 7](time) có bao nhiêu bệnh nhân [được chỉ định](statistic_type) [phẫu thủ thuật](department)
+    - thống kê [bệnh nhân có kết quả](statistic_type) tại khoa [xét nghiệm](department) vào [tuần trước](time)
+    - [tháng rồi](time) có bao nhiêu bệnh nhân [thực hiện](statistic_type) [xét nghiệm](department)
+    - số bệnh nhân [được chỉ định] [xét nghiệm] trong [ngày 12 tháng 9](time) là bao nhiêu?
+    - [tháng trước](time), tổng số ca [có kết quả](statistic_type) tại khoa [xét nghiệm](department) là bao nhiêu
+    - số bệnh nhân [ckq](statistic_type) tại khoa [xét nghiệm] trong [năm ngoái](time) la bao nhiêu?
+    
+
+
+- intent: ask_statistic_pregnant
+  examples: |
+    - [năm trước](time) có bao nhiêu sản phụ [sanh thường](statistic_type)
+    - có bao nhiêu sản phụ [sinh mổ](statistic_type) [tháng rồi] (time)
+    - trong [quý 1](time),  tổng số ca [sinh mổ](statistic_type) là bao nhiêu?
+    - [hôm qua](time) có sản phụ nào sinh không?
+    - [tuần trước](time) có bao nhiêu sản phụ [sanh thường](statistic_type)
+    - [tuần rồi](time) có bao nhiêu sản phụ [sinh mổ](statistic_type)
+    - ngày [01/11/2024](time) đến ngày [15/11/2024](time), có bao nhiêu sản phụ [sinh mổ](statistic_type)
+    - ngày [22 tháng 7](time) có bao nhiêu sản phụ [sinh](statistic_type)
+    - [năm ngoái](time) số sản phụ [sanh thường] là bao nhiêu?
+    - [hôm kia](time) có bao nhiêu sản phụ [nhập viện](statistic_type)
+    - thống kê sản phụ [nhập viện] [tuần trước](time)
+    - [tháng trước](time) có bao nhiêu sản phụ [nhập viện](statistic_type)
+    - số sản phụ [nhập viện] trong [tháng trước] là bao nhiêu?
+    - [tuần trước](time) có bao nhiêu sản phụ [nhập viện](statistic_type)
+
+- intent: ask_money
+  examples: |
+    - [năm trước](time) [thu](statistic_type) bao nhiêu tiền [nhà thuốc](department)
+    - [tuần trước](time) [chi](statistic_type) bao nhiêu tiền cho [nhà thuốc](department)
+    - bộ phận [tài chính](department) [chi](statistic_type) bao nhiêu tiền trong [quý trước](time)
+    - khoa [dược lâm sàng](department) [chi](statistic_type) bao nhiêu tiền trong [tháng trước](time)
+    - tổng số tiền [thu] trong [tháng trước](time) ở bộ phận [nhà thuốc](department) la bao nhiêu?
+    - có bao nhiêu tiền đã được [chi](statistic_type) cho khoa [dược lâm sàng](department) trong [quý 2](time)
+    - tổng số tiền đã [chi](statistic_type) trong [tháng 2] tại bộ phận [tài chinh](department) la bao nhiêu?
+    - [nhà thuốc](department) đã [thu](statistic_type) bao nhiêu tiền trong [năm ngoái](time)
+    - [nhà thuốc](department) trong [tháng 5](time) đã [chi](statistic_type) bao nhiêu tiền?
+    - tổng số tiền khoa [dược lâm sàng](department) [chi](statistic_type) trong [tháng trước](time) la bao nhiêu?
+    - thống kê số tiền đã [thu](statistic_type) được từ khoa [tài chính](department) trong [năm ngoái](time)
+    - [tuần rồi](time) [thu](statistic_type) bao nhiêu tiền [nhà thuốc](department)
+    - [tuần rồi](time) [chi](statistic_type) bao nhiêu tiền cho [dls](department)
+    - ngày [23 tháng 7](time) [thu](statistic_type) bao nhiêu tiền [nha thuoc](department)
+    - [tháng trước](time) [chi](statistic_type) bao nhiêu tiền cho [dược ls](department)
+
+
+
+
+- intent: ask_report
+  examples: |
+    - Cho tôi xem báo cáo tổng hợp [tháng](report_type) [3 năm 2024](time)
+    - Báo cáo tổng [quý](report_type) [1 năm 2024](time)
+    - Có báo cáo [quý](report_type) [1 năm 2021](time) không?
+    - Tôi muốn xem báo cáo [năm](report_type) [2024](time)
+    - Báo cáo [ngày](report_type) [27-10-2024](time)
+    - Báo cáo [tháng](report_type) [5 năm 2023](time)
+    - Cho tôi xin báo cáo [tháng](report_type) [11 năm 2021](time)
+    - Báo cáo của [tháng](report_type) [8 năm 2020](time) đâu?
+    - Xem báo cáo [tháng](report_type) [6 năm 2019](time)
+    - Tôi muốn báo cáo tổng hợp [tháng](report_type) [4 năm 2024](time)
+    - Có báo cáo [tháng](report_type) [12 năm 2022](time) không?
+    - Tìm giúp tôi báo cáo số liệu [tháng](report_type) [10 năm 2023](time)
+    - Báo cáo của [tháng](report_type) [2 năm 2024](time) là gì?
+    - Cho tôi báo cáo [quý](report_type) [3 năm 2024](time)
+    - Báo cáo [quý](report_type) [2 năm 2023](time) đâu?
+    - Tôi cần báo cáo [quý](report_type) [4 năm 2022](time)
+    - Báo cáo [quý](report_type) [2 năm 2024](time) là gì?
+    - Xem báo cáo [quý](report_type) [3 năm 2020](time)
+    - Báo cáo của [quý](report_type) [4 năm 2023](time)
+    - Hãy lấy báo cáo số liệu [quý](report_type) [1 năm 2022](time) giúp tôi
+    - Báo cáo [năm](report_type) [2024](time) đâu?
+    - Tôi cần báo cáo [năm](report_type) [2023](time)
+    - Xem báo cáo [năm](report_type) [2022](time) giúp tôi
+    - Có báo cáo [năm](report_type) [2021](time) không?
+    - Tìm báo cáo [năm](report_type) [2020](time)
+    - Báo cáo của [năm](report_type) [2019](time) là gì?
+    - Hãy cho tôi báo cáo tổng hợp [năm](report_type) [2024](time)
+    - Báo cáo của [năm](report_type) [2025](time) đã có chưa?
+    - Cho tôi xem báo cáo [ngày](report_type) [15-04-2023](time)
+    - Báo cáo [ngày](report_type) [01-01-2024](time) đâu?
+    - Tôi muốn báo cáo [ngày](report_type) [30-12-2023](time)
+    - Báo cáo của [ngày](report_type) [27-10-2024](time)
+    - Có báo cáo [ngày](report_type) [22-07-2022](time) không?
+    - Xem báo cáo [ngày](report_type) [09-09-2023](time)
+    - Hãy lấy báo cáo [ngày](report_type) [14-02-2024](time) giúp tôi
+    - Báo cáo của [ngày](report_type) [31-03-2024](time) đã có chưa?
+    - Có báo cáo của [tháng](report_type) [6 năm 2024](time) không?
+    - Tôi muốn xem lại báo cáo [năm](report_type) [2023](time)
+    - Báo cáo của [quý](report_type) [2 năm 2022](time) đâu?
+    - Tìm giúp tôi báo cáo [ngày](report_type) [12-12-2023](time)
+    - Hãy cho tôi báo cáo [tháng](report_type) [9 năm 2024](time)
+    - Báo cáo [quý](report_type) [3 năm 2024](time) đã có chưa?
+    - Xem thử báo cáo [năm](report_type) [2020](time) nhé
+    - Tôi muốn kiểm tra báo cáo của [ngày](report_type) [20-08-2024](time)
+    - Có báo cáo cho [tháng](report_type) [11 năm 2023](time) không?
+    - Tôi cần báo cáo chi tiết [ngày](report_type) [25-12-2024](time)
+
+
+
+- intent: greet
+  examples: |
+    - ê
+    - hú
+    - chòa
+    - chaof banj
+    - chafo nhe
+    - chaaof banj
+    - trào bạn
+    - xin chào
+    - chào bạn
+    - chào anh
+    - chào chị
+    - hey bro
+    - hey guy
+    - hello
+    - hi
+    - xin chào bạn
+    - xin chào các bạn
+    - chào buổi sáng
+    - nayf
+    - eee
+    - cos owr đay hong
+    - chào buổi chiều
+    - chào buổi tối
+    - chào cậu
+    - chào mừng
+    - mình chào bạn
+    - rất vui được gặp bạn
+    - hế lô
+    - hey
+    - có đây hong
+    - này
+    - bạn ơi
+    - bạn gì ơi
+    - trợ lý ơi
+    - chào trợ lý
+    - chào trợ lý của tôi
+    - trợ lý rảnh không
+
+- intent: ask_wellbeing
+  examples: |
+    - bạn khỏe không?
+    - khỏe hem
+    - khẻo hum
+    - khỏe hả?
+    - dạo này thế nào?
+    - ăn cơm chưa?
+    - uống nước chưa?
+    - công việc thế nào rồi?
+    - sức khỏe ra sao?
+    - sức khỏe thế nào?
+    - khỏe không?
+    - ổn không?
+    - mọi chuyện ổn chứ?
+    - ổn cả chứ?
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - chào tạm biệt
+    - hẹn gặp lại
+    - bye
+    - bai nhe
+    - bái bai
+    - tamj biệtj nhe
+    - tamj biệtj
+    - chào tamj biệtj
+    - bye bye
+    - chào nhé
+    - tạm biệt nhé
+    - chúc bạn một ngày tốt lành
+    - hẹn gặp lại sau
+    - mình đi đây
+    - thôi mình đi trước nha
+    - tạm biệt bạn
+    - mình về đây
+    - gặp lại sau nhé
+    - hẹn gặp lại bạn lần sau
+    - thôi chào
+    - chào tạm biệt bạn nhé
+    - kết thúc
+    - dừng lại
+    - hẹn gặp sau
+    - see you later
+    - see you again
+    - see you
+    - see u
+
+- intent: affirm
+  examples: |
+    - yes
+    - đúng vậy
+    - chuẩn rồi
+    - quá đúng luôn
+    - chính xác
+    - chuẩn
+    - oke
+    - okay
+    - oke đó
+    - đúng vậy đó
+    - đúng thế rồi
+
+- intent: deny
+  examples: |
+    - không
+    - không đúng
+    - sai rồi
+    - hong phải
+    - hong đúng nha
+    - không được
+    - không chính xác
+    - không tốt lắm
+    - không phù hợp
+    - hong phù hợp
+    - vậy là sai rồi
+    - vậy là không đúng
+    - không được nha
+    - không được đâu
+    - chưa đuợc
+
+
+- intent: mood_great
+  examples: |
+    - toi ra vui
+    - tôi ratas vui
+    - tôi rất vui
+    - hôm nay tôi rất tốt
+    - tuyệt vời
+    - bá cháy
+    - quá tốt
+    - thật tuyệt
+    - quá tuyệt vời
+    - quá đỉnh luôn
+    - thật là tuyệt
+    - thật là hay
+    - tôi thích nó
+    - thích thật
+
+- intent: mood_unhappy
+  examples: |
+    - tôi không ổn
+    - hôm nay tệ quá
+    - tôi mệt quá
+    - tôi stress quá
+    - tôi kiệt sức quá
+    - tôi buồn quá
+    - buồn quá
+    - khó chịu thật
+    - không thích
+    - thất vọng quá
+    - chán quá 
+    - thật tệ
+    - thật là bồn
+    - thật chán quá đi
+    - thật không ổn
+    - không hạnh phúc
+    - không thấy vui
+    - tôi không vui
+    - tui quá đuối
+    - tui chán
+
+
+- intent: bot_challenge
+  examples: |
+    - bạn là bot phải không?
+    - bạn có phải người không?
+    - bạn là siêu nhân hả?
+    - bạn là ai vậy?
+    - bạn là người đúng không?
+    - bạn là AI hả?
+

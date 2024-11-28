@@ -1,0 +1,366 @@
+version: "3.1"
+
+stories:
+- story: ask statistics flow
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: hôm qua
+    - department: cận lâm sàng
+    - statistic_type: được chỉ định
+  - action: action_track_statistics
+
+- story: ask statistics flow 2
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: năm trước
+    - department: ngoại trú
+    - statistic_type: khám bệnh
+  - action: action_track_statistics
+
+
+- story: ask statistics with time only
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: tuần trước
+  - action: action_track_statistics
+
+- story: ask statistics with time and department
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: hôm qua
+    - department: cấp cứu
+  - action: action_track_statistics
+
+- story: ask statistics with time and statistic_type
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: tháng trước
+    - statistic_type: nhập viện
+  - action: action_track_statistics
+
+- story: ask statistics with department and statistic_type
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - department: nội trú
+    - statistic_type: tử vong
+  - action: action_track_statistics
+
+- story: ask statistics with all entities and range time
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: ngày 12-06-2024
+    - department: ngoại trú
+    - statistic_type: khám bệnh
+  - action: action_track_statistics
+
+- story: ask statistics with incomplete entities
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - department: cấp cứu
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - statistic_type: đang điều trị
+  - action: action_track_statistics
+
+- story: ask statistics without entities
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+  - action: action_track_statistics
+
+- story: ask statistics with department only
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - department: phẫu thuật
+  - action: action_track_statistics
+
+- story: ask statistics with statistic_type only
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - statistic_type: tử vong
+  - action: action_track_statistics
+
+- story: ask pregnant statistics flow
+  steps:
+  - intent: ask_statistic_pregnant
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - time: hôm qua
+  - action: action_track_pregnant_statistics
+    
+- story: ask pregnant statistics flow 2
+  steps:
+  - intent: ask_statistic_pregnant
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - statistic_type: nhập viện
+  - action: action_track_pregnant_statistics
+    
+- story: ask pregnant statistics flow 3
+  steps:
+  - intent: ask_statistic_pregnant
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - statistic_type: sinh thường
+  - action: action_track_pregnant_statistics
+
+- story: ask pregnant statistics flow 4
+  steps:
+  - intent: ask_statistic_pregnant
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - statistic_type: sinh mổ
+  - action: action_track_pregnant_statistics
+    
+
+- story: ask statistics normal and pregnant
+  steps:
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+      - statistic_type: tử vong
+  - slot_was_set:
+    - last_time: "tuần trước"
+    - last_department: "nội trú"
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+      - department: "nội trú"
+  - slot_was_set:
+    - last_time: "12-05-2024"
+    - last_statistic_type: "tử vong"
+  - action: action_track_statistics
+  - intent: ask_statistic_pregnant
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - statistic_type: "sinh thường"
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistic_pregnant
+    entities:
+    - statistic_type: "nhập viện"
+  - action: action_track_pregnant_statistics
+  - intent: ask_statistics
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - statistic_type: khám bệnh
+  - action: action_track_statistics
+  - intent: ask_statistics
+    entities:
+    - time: năm trước
+  - action: action_track_statistics
+
+
+
+- story: trả lời khi hỏi về tài chính
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_money
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - time: hôm qua
+  - slot_was_set:
+    - last_department: "tài chính"
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - statistic_type: thu
+    - department: tài chính
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - department: dược lâm sàng
+  - action: action_get_financial_statistics
+
+
+- story: trả lời khi hỏi về tài chính 2
+  steps:
+  - intent: ask_money
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - statistic_type: chi
+    - department: nhà thuốc
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - statistic_type: thu
+    - time: tuần trước
+  - action: action_get_financial_statistics
+  - intent: ask_money
+    entities:
+    - department: dược lâm sàng
+  - action: action_get_financial_statistics
+
+
+
+
+- story: ask report with time
+  steps:
+  - intent: ask_report
+    entities:
+      - report_type: "tháng"
+      - time: "3 năm 2024"
+  - action: action_fetch_report
+  - slot_was_set:
+    - report_type: "tháng"
+    - report_time: "3 năm 2024"
+
+- story: follow up report
+  steps:
+  - slot_was_set:
+    - report_type: "tháng"
+    - report_time: "3 năm 2024"
+  - intent: ask_report
+    entities:
+      - report_type: "tháng"
+      - time: "9 năm 2024"
+  - action: action_fetch_report
+  - slot_was_set:
+    - report_type: "tháng"
+    - report_time: "9 năm 2024"
+
+- story: follow up report 2
+  steps:
+  - intent: ask_report
+  - action: action_fetch_report
+  - intent: ask_report
+    entities:
+      - report_type: "quý"
+      - time: "1 năm 2024"
+  - action: action_fetch_report
+
+- story: ask report without time
+  steps:
+  - intent: ask_report
+    entities:
+      - report_type: "năm"
+  - action: action_fetch_report
+  - slot_was_set:
+    - report_type: "năm"
+    - report_time: null
+
+- story: confirm report and re-ask
+  steps:
+  - slot_was_set:
+    - report_type: "tháng"
+    - report_time: "7 năm 2023"
+  - intent: affirm
+  - action: utter_affirm
+  - intent: ask_report
+    entities:
+      - report_type: "ngày"
+      - time: "25-12-2024"
+  - slot_was_set:
+    - report_type: "ngày"
+    - report_time: "25-12-2024"
+  - action: action_fetch_report
+  - intent: deny
+  - action: utter_ask_department
+  - intent: ask_report
+    entities:
+      - report_type: "tháng"
+      - time: "7 năm 2023"
+  - action: action_fetch_report
+  - intent: affirm
+  - action: utter_affirm
+
+- story: switch report type
+  steps:
+  - slot_was_set:
+    - report_type: "ngày"
+    - report_time: "27-10-2024"
+  - intent: ask_report
+    entities:
+      - report_type: "quý"
+      - time: "4 năm 2023"
+  - action: action_fetch_report
+  - slot_was_set:
+    - report_type: "quý"
+    - report_time: "4 năm 2023"
+
+
+
+
+
+
+
+
+
+
+
+
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_affirm
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_ask_department
+
+- story: fallback example
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: nlu_fallback
+    - action: utter_fallback
