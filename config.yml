@@ -14,6 +14,7 @@ pipeline:
     - time
   locale: "vi_VN"         # Ngôn ngữ tiếng Việt
   timezone: "Asia/Ho_Chi_Minh" 
+  default_year: 2024
 - name: WhitespaceTokenizer
 - name: RegexFeaturizer
   case_sensitive: False

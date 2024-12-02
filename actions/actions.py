@@ -6,7 +6,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from datetime import datetime, timedelta
-        
+from dateutil.parser import parse
 
 import requests
 import urllib
@@ -27,7 +27,7 @@ DEPARTMENT_MAPPING = {
     "nội trú":"NoiTru",
     "tài chính": "TaiChinh",
     "nhà thuốc": "NhaThuoc",
-    "DLS": "DLS",
+    "dược lâm sàng": "DLS",
 }
 
 # Dictionary ánh xạ statistic_type
@@ -168,6 +168,12 @@ def normalize_report_date(report_type: str, time_str: str) -> Optional[str]:
             (r'.*?ngày\s*(\d{1,2})(?:\s*[-/]\s*|\s+)?tháng\s*(\d{1,2})(?:\s*[-/]\s*|\s+)?năm\s*(\d{4})', r'\1-\2-\3'),
             (r'.*?(\d{1,2})(?:\s*[-/]\s*|\s+)?tháng\s*(\d{1,2})(?:\s*[-/]\s*|\s+)?năm\s*(\d{4})', r'\1-\2-\3')
         ]
+        try:
+            dt = parse(s)
+            # Chuyển thành định dạng ngày-tháng-năm
+            return dt.strftime("%d-%m-%Y")
+        except Exception:
+            pass
         
         for pattern, replacement in patterns:
             match = re.search(pattern, s)
@@ -244,6 +250,8 @@ class ActionTrackStatistics(Action):
         current_department = next(tracker.get_latest_entity_values("department"), None)
         current_statistic = next(tracker.get_latest_entity_values("statistic_type"), None)
         print("Current department:", current_department, "Current statistic:", current_statistic)
+        last_org_time = tracker.get_slot("last_org_time")
+        org_time = last_org_time
         # Lấy thông tin thời gian từ thông điệp
         time_entity = None
         grain = tracker.get_slot("last_grain")  # Giá trị mặc định
@@ -262,14 +270,16 @@ class ActionTrackStatistics(Action):
         # Lấy giá trị từ slots (ngữ cảnh trước đó)
         last_department = tracker.get_slot("last_department")
         last_statistic = tracker.get_slot("last_statistic_type")
-        print("Last department:", last_department, "Last statistic:", last_statistic)
         last_time = tracker.get_slot("last_time")
+        
+        print("Last department:", last_department, "Last statistic:", last_statistic, "Last time:", last_time)
         last_grain = tracker.get_slot("last_grain")
 
         # Ưu tiên lấy giá trị từ thông điệp hiện tại, nếu không thì lấy từ ngữ cảnh
         department = current_department if current_department else last_department
         statistic_type = current_statistic or last_statistic
         time_entity = time_entity or last_time
+        
         print("org_time", org_time)
         grain = grain or last_grain
 
@@ -290,6 +300,7 @@ class ActionTrackStatistics(Action):
 
         # Map department và statistic type sang mã truy vấn
         department_code = DEPARTMENT_MAPPING.get(department.lower())
+        print("department_code",department_code)
         statistic_code = STATISTIC_MAPPING.get(statistic_type.lower())
         
         if not department_code or not statistic_code:
@@ -318,11 +329,11 @@ class ActionTrackStatistics(Action):
                 if isinstance(value, int):  # Kiểm tra nếu giá trị là một số
                     total = format_number_with_dot(value)
                     messages = [
-                        f"Trong {org_time}, tại khoa {department} có {total} bệnh nhân {statistic_type}.",
+                        f"Trong {org_time.lower()}, tại khoa {department} có {total} bệnh nhân {statistic_type}.",
                         f"{org_time}, khoa {department} đã có {total} bệnh nhân {statistic_type}.",
-                        f"Tại khoa {department} {org_time}, số bệnh nhân {statistic_type} là {total}.",
-                        f"Số lượng bệnh nhân {statistic_type} tại khoa {department} trong {org_time} là {total}.",
-                        f"Trong {org_time} tại khoa {department}, tổng số bệnh nhân {statistic_type} là {total}."
+                        f"Tại khoa {department} {org_time.lower()}, số bệnh nhân {statistic_type} là {total}.",
+                        f"Số lượng bệnh nhân {statistic_type} tại khoa {department} trong {org_time.lower()} là {total}.",
+                        f"Trong {org_time.lower()} tại khoa {department}, tổng số bệnh nhân {statistic_type} là {total}."
                     ]
                     message = random.choice(messages)
                     dispatcher.utter_message(text=message)  # Trả về thông điệp
@@ -342,6 +353,7 @@ class ActionTrackStatistics(Action):
             SlotSet("last_statistic_type", statistic_type),
             SlotSet("last_time", time_entity),
             SlotSet("last_grain", grain),
+            SlotSet("last_org_time", org_time)
         ]
 
 
@@ -355,6 +367,8 @@ class ActionTrackPregnantStatistics(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        last_org_time = tracker.get_slot("last_org_time")
+        org_time = last_org_time
         # Lấy thực thể thời gian từ thông điệp
         time_entity = None
         grain = tracker.get_slot("last_grain")
@@ -367,7 +381,6 @@ class ActionTrackPregnantStatistics(Action):
                 grain = entity.get("additional_info", {}).get("grain", "day")
                 break
 
-        print("Current time:", time_entity, "Grain:", grain)
 
         # Lấy thông tin thống kê và phòng ban
         current_statistic = next(tracker.get_latest_entity_values("statistic_type"), None)
@@ -375,19 +388,23 @@ class ActionTrackPregnantStatistics(Action):
         last_statistic = tracker.get_slot("last_statistic_type")
         last_time = tracker.get_slot("last_time")
         last_grain = tracker.get_slot("last_grain")
-        statistic_type = current_statistic or last_statistic
+        statistic_type = current_statistic if current_statistic else last_statistic
 
         # Mặc định department là CSSKSS
         department_code = DEPARTMENT_MAPPING["CSSKSS"]
         statistic_code = STATISTIC_MAPPING.get(statistic_type.lower()) if statistic_type else None
         
         time_entity = time_entity or last_time
+        print("Current time:", time_entity, "Grain:", grain)
         grain = grain or last_grain
 
         # Kiểm tra thông tin đầu vào
-        if not statistic_type or not time_entity:
-            dispatcher.utter_message(text="Xin lỗi, tôi cần thêm thông tin để trả lời câu hỏi của bạn.")
+        if not statistic_type:
+            dispatcher.utter_message(text="Xin lỗi sếp, tôi cần thêm thông tin về loại thống kê như sinh thường, sinh mổ,... để trả lời câu hỏi của sếp.")
             return []
+
+        if not time_entity:
+            dispatcher.utter_message(text="Xin lỗi sếp, tôi cần thêm thông tin về thời gian để trả lời câu hỏi của sếp.")
 
         if not statistic_code:
             dispatcher.utter_message(text=f"Xin lỗi, tôi không thể xử lý yêu cầu thống kê {statistic_type}.")
@@ -413,11 +430,11 @@ class ActionTrackPregnantStatistics(Action):
                 if isinstance(value, int):  # Kiểm tra nếu giá trị là một số
                     total = format_number_with_dot(value)
                     messages = [
-                        f"Trong {org_time}, tại khoa {department_code} có {total} sản phụ{statistic_type}.",
-                        f"{org_time}, khoa {department_code} đã có {total} sản phụ {statistic_type}.",
-                        f"Tại khoa {department_code} {org_time}, số sản phụ {statistic_type} là {total}.",
-                        f"Số lượng sản phụ {statistic_type} tại khoa {department_code} trong {org_time} là {total}.",
-                        f"Trong {org_time} tại khoa {department_code}, tổng số sản phụ {statistic_type} là {total}."
+                        f"Trong {org_time.lower()}, tại khoa sản có {total} sản phụ {statistic_type}.",
+                        f"{org_time}, khoa chăm sóc sức khỏe sinh sản đã có {total} sản phụ {statistic_type}.",
+                        f"Tại khoa sản {org_time.lower()}, số sản phụ {statistic_type} là {total}.",
+                        f"Số lượng sản phụ {statistic_type} tại khoa sản trong {org_time.lower()} là {total}.",
+                        f"Trong {org_time.lower()} tại khoa chăm sóc sức khỏe sinh sản, tổng số sản phụ {statistic_type} là {total}."
                     ]
                     message = random.choice(messages)
                     dispatcher.utter_message(text=message)  # Trả về thông điệp
@@ -435,7 +452,8 @@ class ActionTrackPregnantStatistics(Action):
         return [
             SlotSet("last_statistic_type", statistic_type),
             SlotSet("last_time", time_entity),
-            SlotSet("last_grain", grain)
+            SlotSet("last_grain", grain),
+            SlotSet("last_org_time", org_time)
         ]
 
 class ActionGetFinancialStatistics(Action):
@@ -449,6 +467,8 @@ class ActionGetFinancialStatistics(Action):
         current_department = next(tracker.get_latest_entity_values("department"), None)
         current_statistic = next(tracker.get_latest_entity_values("statistic_type"), None)
         print("Current department:", current_department, "Current statistic:", current_statistic)
+        last_org_time = tracker.get_slot("last_org_time")
+        org_time = last_org_time
         # Lấy thông tin thời gian từ thông điệp
         time_entity = None
         grain = tracker.get_slot("last_grain")  # Giá trị mặc định
@@ -521,11 +541,11 @@ class ActionGetFinancialStatistics(Action):
                 if isinstance(value, int):  # Kiểm tra nếu giá trị là một số
                     total = format_number_with_dot(value)
                     messages = [
-                        f"Trong {org_time}, tại {department} {statistic_type} tổng cộng {total} VNĐ.",
+                        f"Trong {org_time.lower()}, tại {department} {statistic_type} tổng cộng {total} VNĐ.",
                         f"{org_time}, {department} đã {statistic_type} {total} VNĐ.",
-                        f"Tại bộ phận {department} {org_time}, số tiền đã {statistic_type} là {total} VNĐ.",
-                        f"Số tiền {statistic_type} tại {department} trong {org_time} là {total} VNĐ.",
-                        f"Trong {org_time} tại bộ phận {department}, tổng tiền {statistic_type} là {total} VNĐ."
+                        f"Tại bộ phận {department} {org_time.lower()}, số tiền đã {statistic_type} là {total} VNĐ.",
+                        f"Số tiền {statistic_type} tại {department} trong {org_time.lower()} là {total} VNĐ.",
+                        f"Trong {org_time.lower()} tại bộ phận {department}, tổng tiền {statistic_type} là {total} VNĐ."
                     ]
                     message = random.choice(messages)
                     # message = f"Từ {start_date} đến {end_date}, tại bộ phận {department} {statistic_type} tổng cộng {total} VNĐ."
@@ -546,6 +566,7 @@ class ActionGetFinancialStatistics(Action):
             SlotSet("last_statistic_type", statistic_type),
             SlotSet("last_time", time_entity),
             SlotSet("last_grain", grain),
+            SlotSet("last_org_time", org_time),
         ]
         
         
@@ -555,9 +576,14 @@ class ActionFetchReport(Action):
 
     def run(self, dispatcher, tracker, domain):
         # Lấy các entity từ người dùng
-        report_time = tracker.get_slot("report_time")  # Ví dụ: "ngày 25 tháng 10 - 2024" hoặc "25-10 năm 2024"
-        report_type = tracker.get_slot("report_type")  # Ví dụ: "tháng", "quý", "năm"
+        time = next(tracker.get_latest_entity_values("time"), None)
+        report = next(tracker.get_latest_entity_values("report_type"), None)
         
+        last_report_time = tracker.get_slot("report_time")  # Ví dụ: "ngày 25 tháng 10 - 2024" hoặc "25-10 năm 2024"
+        last_report_type = tracker.get_slot("report_type")  # Ví dụ: "tháng", "quý", "năm"
+        
+        report_time = time if time else last_report_time
+        report_type = report if report else last_report_type
         print("Report Time:", report_time, "Report Type:", report_type)
 
         # Kiểm tra ngữ cảnh cũ từ slot report_context
@@ -617,7 +643,7 @@ class ActionFetchReport(Action):
                 # Kiểm tra kết quả từ API
                 if reports:
                     report_messages = "\n".join(
-                        [f"- {report['reportName']}: [Xem ngay]({report['reportFileUrl']})" for report in reports if report.get('reportFileUrl')]
+                        [f"- {report['reportName']} - [Xem ngay]({report['reportFileUrl']})" for report in reports if report.get('reportFileUrl')]
                     )
                     dispatcher.utter_message(text=f"Các báo cáo bạn cần:\n{report_messages}")
                 else:

@@ -200,7 +200,7 @@ stories:
     entities:
     - time: hôm qua
   - slot_was_set:
-    - last_department: "tài chính"
+    - last_department: tài chính
   - action: action_get_financial_statistics
   - intent: ask_money
     entities:
@@ -231,6 +231,26 @@ stories:
     entities:
     - department: dược lâm sàng
   - action: action_get_financial_statistics
+
+- story: trả lời khi hỏi về tài chính 3
+steps:
+- intent: ask_money
+- action: action_get_financial_statistics
+- intent: ask_money
+  entities:
+  - time: 26-8-2024
+- slot_was_set:
+  - last_department: nhà thuốc
+- action: action_get_financial_statistics
+- intent: ask_money
+  entities:
+  - statistic_type: thu
+  - time: tuần trước
+- action: action_get_financial_statistics
+- intent: ask_money
+  entities:
+  - department: dược lâm sàng
+- action: action_get_financial_statistics
 
 
 

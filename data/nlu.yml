@@ -122,6 +122,12 @@ nlu:
     - cc và hs tích cực
     - cấp cứu và hồi sức
     - cap cuu va hoi suc
+    - cấp cứu và hồi sức tích cực
+    - cấp cứu và hồi sức tc
+    - cấp cứu hstc
+    - hồi sức tích cực
+    - cc hstc
+    - hstc
     - cấp cứu và hstc
     - cấp cứu hstc
     - cap cuu
@@ -226,8 +232,12 @@ nlu:
     - DLS
     - dược ls
     - duoc lam sang
+    - dược lâm sàng
+    - Dls
     - dược lâm sang
     - duoc lâm sàng
+    - dược lâm sàn
+
 
 - synonym: tuần trước
   examples: |
@@ -330,6 +340,8 @@ nlu:
   examples: |
     - [năm trước](time) có bao nhiêu sản phụ [sanh thường](statistic_type)
     - có bao nhiêu sản phụ [sinh mổ](statistic_type) [tháng rồi] (time)
+    - [sinh thường](statistic_type)
+    - [sinh mổ](statistic_type)
     - trong [quý 1](time),  tổng số ca [sinh mổ](statistic_type) là bao nhiêu?
     - [hôm qua](time) có sản phụ nào sinh không?
     - [tuần trước](time) có bao nhiêu sản phụ [sanh thường](statistic_type)
